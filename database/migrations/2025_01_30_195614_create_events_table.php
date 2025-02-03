@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tasks', function (Blueprint $table) {
+        Schema::create('events', function (Blueprint $table) {
             $table->id();
-            $table->foreignID('user_id')->constrained()->onDelete('cascade');
-            $table->string('title');
-            $table->text('description');
-            $table->integer('priority');
-            $table->integer('finished_status');
-            $table->date('due_date');
+            $table->string('event_title');
+            $table->string('event_body');
+            $table->date('start_date');
+            $table->date('end_date');
+            $table->string('event_color');
+            $table->string('event_border_color');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tasks');
+        Schema::dropIfExists('events');
     }
 };

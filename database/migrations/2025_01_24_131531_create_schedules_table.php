@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('schedules', function (Blueprint $table) {
             $table->id();
-            $table->foreignID('user_id');
-            $table->dateTime('date');
+            $table->foreignID('user_id')->constrained()->onDelete('cascade');
+            $table->date('date');
             $table->string('title');
             $table->text('description');
-            $table->dateTime('start_time');
-            $table->dateTime('finish_time');
+            $table->time('start_time');
+            $table->time('finish_time');
             $table->timestamps();
         });
     }
